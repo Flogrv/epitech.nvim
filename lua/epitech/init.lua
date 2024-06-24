@@ -3,7 +3,7 @@ local M = {}
 
 local function createHeader()
     local file_extension = vim.fn.expand("%:e")
-    local valid_extensions = { c = true, h = true, Makefile = true, cpp = true, hpp = true}
+    local valid_extensions = { c = true, h = true, Makefile = true, cpp = true, hpp = true }
 
     if not valid_extensions[file_extension] then
         vim.api.nvim_err_writeln("Error: File extension not valid")
@@ -27,6 +27,10 @@ end
 function M.setup(opts)
     opts = opts or {}
     vim.api.nvim_create_user_command("EpitechHeader", createHeader, {})
+    vim.keymap.set('n', '<Leader>he', createHeader, {
+        noremap = true,
+        desc = "shortcut insert epitech header"
+    })
 end
 
 return M
