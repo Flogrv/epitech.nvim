@@ -29,7 +29,8 @@ function M.setup(opts)
     vim.api.nvim_create_user_command("EpitechHeader", createHeader, {})
     vim.keymap.set('n', '<leader>h', createHeader, {
         noremap = true,
-        desc = "shortcut insert epitech header"
+        desc = "shortcut insert epitech header",
+        silent = true
     })
 end
 
