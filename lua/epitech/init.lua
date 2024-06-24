@@ -3,8 +3,8 @@ local M = {}
 
 local function createHeader()
     local file_extension = vim.fn.expand("%:e")
-    local valid_extensions = { c = true, h = true, Makefile = true }
-    
+    local valid_extensions = { c = true, h = true, Makefile = true, cpp = true, hpp = true}
+
     if not valid_extensions[file_extension] then
         vim.api.nvim_err_writeln("Error: File extension not valid")
         return
@@ -13,7 +13,7 @@ local function createHeader()
     local filename = vim.fn.expand("%:t")
     local year = os.date("%Y")
     local description = vim.fn.input("Enter Description: ")
-    
+
     local header_template = nil
     if file_extension == "Makefile" then
         header_template = string.format("##\n## EPITECH PROJECT, %s\n## %s\n## File description:\n## %s\n##\n", year, filename, description)
